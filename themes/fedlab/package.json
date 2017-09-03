@@ -1,0 +1,12 @@
+{
+  "name": "hexo-theme-fedlab",
+  "description": "fedlab blog theme",
+  "version": "0.0.1",
+  "private": true,
+  "author": {
+    "name": "fedlab",
+    "email": "fedlab@163.com"
+  },
+  "dependencies": {
+  }
+}
