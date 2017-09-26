@@ -1,0 +1,64 @@
+/*
+ * @Author: zuojj
+ * @Description: sidebar 
+ * @Date: 2017-09-24 16:26:26 
+ */
+
+%sidebar-section {
+    margin-bottom: 40px;
+    .sec-title {
+        position: relative;
+        color: #333;
+        padding-left: 15px;
+        height: 24px;
+        line-height: 24px;
+        margin-bottom: 20px;
+
+        &:before {
+            position: absolute;
+            left: 0;
+            top: 50%;
+            margin-top: -9px;
+            content: '';
+            width: 3px;
+            height: 18px;
+            background-color: #16a085;
+        }
+    }
+    .sec-content {
+        padding: 0 15px;
+
+        ul>li {
+            margin-bottom: 8px;
+            white-space: nowrap;
+            -o-text-overflow: ellipsis;
+            text-overflow: ellipsis;
+            overflow: hidden;
+
+            a {
+                color: #979797;
+                &:hover {
+                    color:#3a3a3a;
+                }
+            }
+        }
+    }
+}
+
+.fedlab-sidebar {
+    float: right;
+    width: 355px;
+    color: #979797;
+    line-height: 30px;
+
+    &-qrcode {
+        @extend %sidebar-section;
+        img {
+            width: 100%;
+        }
+    }
+
+    &-favlinks {
+        @extend %sidebar-section;
+    }
+}

@@ -1,0 +1,53 @@
+/*
+ * @Author: zuojj
+ * @Description: 返回顶部   
+ * @Date: 2017-09-24 09:04:31 
+ */
+
+
+.fedlab-backtop {
+    display: none;
+    position: fixed;
+    right: 50%;
+    bottom: 237px;
+    z-index: 999;
+    width: 42px;
+    height: 42px;
+    margin-right: -660px;
+    cursor: pointer;
+    background-color: #fdfdfd;
+    text-indent: -9999px;
+    border: 1px solid #efefef;
+
+    &:before,
+    &:after {
+        content: "";
+        width: 0;
+        height: 0;
+        border-width: 14px;
+        border-style: solid;
+        position: absolute;
+        left: 6px;
+    }
+
+    &:before {
+        -webkit-transition: all .4s;
+        transition: all .4s;
+        border-color: transparent transparent #d5d5d5;
+        top: 0;
+    }
+
+    &:after {
+        border-color: transparent transparent #fff;
+        top: 2px;
+    }
+
+    &:hover {
+        &:before {
+            border-color: transparent transparent #737373;
+            position: absolute;
+            left: 6px;
+            top: 0;
+        }
+    }
+}

@@ -1,0 +1,14 @@
+
+<%- partial('_partial/head') %>
+
+<body>
+    <%- partial('_partial/header', null, {cache: !config.relative_link}) %>
+    <%- partial('_partial/banner', null, {cache: !config.relative_link}) %>
+    <div class="fedlab-main">
+        <%- body %>
+    </div>
+    <%- partial('_partial/header', null, {cache: !config.relative_link}) %>
+    <div class="fedlab-backtop">返回顶部</div>
+</body>
+
+</html>

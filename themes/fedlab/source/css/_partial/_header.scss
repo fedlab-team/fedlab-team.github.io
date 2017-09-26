@@ -1,0 +1,133 @@
+/*
+ * @Author: zuojj
+ * @Description: header 
+ * @Date: 2017-09-23 18:49:01 
+ */
+
+.fedlab {
+    /* nav */
+    &-header {
+        position: fixed;
+        left: 0;
+        top: 0;
+        right: 0;
+        z-index: 10;
+        padding: 15px 0;
+        background-color: transparent;
+        box-shadow: none;
+        -webkit-transition: all .6s;
+        transition: all .6s;
+        margin-top: 0;
+        &-inner {
+            max-width: 1200px;
+            width: 1200px;
+            margin: 0 auto;
+            @extend %clearfix;
+        }
+        &.hide {
+            margin-top: -80px;
+        }
+        &.white {
+            background-color: #fff;
+            box-shadow: 1px 1px 10px rgba(0,0,0,.2);
+            .fedlab-header-nav-item {
+                &:hover,
+                &.current {
+                    a {
+                        color: #f00;
+                    }
+                }
+            }
+        }
+        /* logo */
+        &-logo {
+            float: left;
+            a {
+                display: block;
+                overflow: hidden;
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                border: 1px solid #efefef;
+                background:url("http://zuojj.com/fedlab-logo.jpg");
+                background-size: 100% 100%;
+                text-indent: -999em;
+            }
+        }
+        /* 导航 */
+        &-nav {
+            float: left;
+            margin-left: 128px;
+            &-item {
+                float: left;
+                position: relative;
+                height: 40px;
+                margin-right: 32px;
+                font-size: 16px;
+                &:hover,
+                &.current {
+                    a {
+                        opacity: 1;
+                        color: #fff;
+                        border-color: #fff;
+                    }
+                }
+                a {
+                    cursor: pointer;
+                    display: block;
+                    line-height: 37px;
+                    padding: 0 12px;
+                    border-bottom: 3px solid transparent;
+                    color: grey;
+                    -webkit-transition: color .3s ease-in, border-color .2s ease-in;
+                    transition: color .3s ease-in, border-color .2s ease-in;
+                }
+            }
+        }
+
+        /* search */
+        &-search {
+            float: right;
+            @extend %clearfix;
+            &-form {
+                display: none;
+                padding-top: 6px;
+            }
+            &-btn,
+            &-icon {
+                float: left;
+                width: 28px;
+                text-indent: -999em;
+                @extend %input-button;
+            }
+            &-btn {
+                margin-top: 6px;
+            }
+            &-clear {
+                float: right;
+                width: 28px;
+                text-indent: -999em;
+                @extend %input-button;
+            }
+            &-text {
+                float: left;
+                width: 348px;
+                margin: 0 5px;
+                padding: 0 5px;
+                color: #fff;
+                background-color: transparent;
+                font-size: 16px;
+                -webkit-animation: serInput .4s 80ms ease both;
+                animation: serInput .4s 80ms ease both;
+                @extend %input-button;
+            }
+        }
+    }
+}
+
+%input-button {
+    height: 28px;
+    overflow: hidden;
+    outline: 0;
+    border: 0;
+}

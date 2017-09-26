@@ -1,0 +1,137 @@
+@media screen and (max-width: 640px) {
+    .fedlab{
+        &-header {
+            padding: 10px 4%;
+            width: auto;
+            position: fixed;
+            left: 0;
+            top: 0;
+            z-index: 3000;
+            background-color: #fff;
+            right: 0;
+    
+            &-inner {
+                width: auto;
+            }
+            &-nav {
+                float: right;
+                margin-left: 0;
+    
+                &-item {
+                    margin-right: 0;
+                    font-size: 14px;
+                    &.current {
+                        a {
+                            color: #f00;
+                        }
+                    }
+                }
+            }
+    
+            &-search {
+                display:none;
+            }
+        }
+
+        &-hr {
+            display: none;
+        }
+        &-banner {
+            display: none;
+        }
+
+        &-main {
+            width: auto;
+        }
+
+        &-article {
+            &-list {
+                padding: 80px 4% 0;
+                margin-left: 0;
+            }
+
+            &-item {
+                width: 100%;
+                float: none;
+                margin-left: 0;
+                margin-bottom: 16px;
+
+                &-banner {
+                    height: auto;
+                    min-height: 60px;
+
+                    .pic {
+                        height: auto;
+                    }
+                }
+
+                &-title {
+                    padding: 10px 10px 0;
+                    h3 {
+                        font-size: 14px;
+                    }
+                }
+
+                &-footer {
+                    font-size: 12px;
+                    padding: 0 10px 10px;
+                }
+            }
+        }
+
+        &-view-more {
+            margin: 0 4% 16px;
+            position: relative;
+            z-index: 3;
+            font-size: 14px;
+        }
+
+        &-footer {
+            width: 100%;
+            padding: 20px 0;
+            text-align: center;
+            overflow: hidden;
+            &-inner {
+                width: auto;
+            }
+        }
+
+        &-article {
+            margin: 60px 0 0;
+
+            &-details {
+                float: none;
+                width: 100%;
+            }
+
+            &-con {
+                border: none;
+                padding: 30px 5%;
+
+                &-title {
+                    h3 {
+                        font-size: 18px;
+                        margin-bottom: 20px;
+                    }
+                }
+                &-meta {
+                    margin-bottom: 15px;
+                }
+                &-prevnext {
+                    .prev-page,
+                    .next-page {
+                        float: none;
+                        width: 100%;
+                        max-width: 100%;
+                        margin-bottom: 6px;
+                    }
+                }
+            }
+        }
+
+        &-sidebar {
+            display: none;
+        }
+    }
+
+}

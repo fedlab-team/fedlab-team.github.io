@@ -1,0 +1,136 @@
+/*
+ * @Author: zuojj
+ * @Description: 文章内容页
+ * @Date: 2017-09-24 15:44:42 
+ */
+
+.fedlab-article {
+    margin: 120px auto 70px;
+    a {
+        color: #65a6ff;
+    }
+    @extend %clearfix;
+    &-details {
+        float: left;
+        width: 800px;
+    }
+    &-con {
+        background-color: #fff;
+        padding: 50px 39px;
+        border: 1px solid #dfdfdf;
+        &-title {
+            h3 {
+                color: #3a3a3a;
+                font-size: 30px;
+                margin-bottom: 40px;
+            }
+        }
+        &-meta {
+            color: #979797;
+            font-size: 12px;
+            overflow: hidden;
+            margin-bottom: 30px;
+        }
+        &-banner {
+            box-shadow: 0 1px 4px rgba(0, 0, 0, .15);
+            margin-bottom: 30px;
+            img {
+                display: block;
+                width: 100%;
+            }
+        }
+        &-text {
+            overflow: hidden;
+            font-size: 16px;
+            font-family: 'Helvetica Neue', Helvetica, 'Lucida Grande', 'Luxi Sans', Arial, 'PingFang SC', 'Hiragino Sans GB', STHeiti, 'Microsoft YaHei', 'Wenquanyi Micro Hei', 'WenQuanYi Micro Hei Mono', 'WenQuanYi Zen Hei', 'WenQuanYi Zen Hei Mono', LiGothicMed;
+            line-height: 2;
+            color: #3a3a3a;
+            h1,
+            h2,
+            h3,
+            h4 {
+                margin: 1.2em 0 1em;
+            }
+            h1 {
+                font-size: 1.8em;
+            }
+            h2 {
+                font-size: 1.6em;
+            }
+            h3 {
+                font-size: 1.4em;
+            }
+            h4 {
+                font-size: 1.2em;
+            }
+            h5,
+            h6,
+            ol,
+            ul,
+            p {
+                margin-bottom: 1.4em;
+            }
+            h5,
+            h6 {
+                font-size: 1em;
+            }
+            blockquote {
+                display: block;
+                background: #f2f2f4;
+                padding: 1em;
+                border-left: 5px solid #c1c1c1;
+                margin-bottom: 1.4em;
+                h5,
+                h6,
+                p {
+                    &:last-child {
+                        margin-bottom: 0;
+                    }
+                }
+            }
+            img {
+                display: block;
+            }
+        }
+
+        &-reprint {
+            word-wrap: break-word;
+            font-size: 16px;
+            line-height: 28px;
+            color: #3a3a3a;
+        }
+
+        &-prevnext {
+            border-top: 1px solid #dfdfdf;
+            padding-top: 20px;
+            margin-top: 20px;
+            color: #979797;
+            @extend %clearfix;
+            .prev-page,
+            .next-page {
+                max-width: 50%;
+                width: auto;
+                overflow: hidden;
+                white-space: nowrap;
+                word-wrap: normal;
+                text-overflow: ellipsis;
+                word-break: break-all;
+
+                a {
+                    color: #979797;
+                    &:hover {
+                        color:#3a3a3a;
+                    }
+                }
+            }
+
+            .prev-page {
+                float: left;
+            }
+
+            .next-page {
+                float: right;
+            }
+        }
+    }
+}
