@@ -1,0 +1,661 @@
+@charset "UTF-8";
+.fedlab-header-inner:before, .fedlab-header-search:before, .fedlab-article-list:before, .fedlab-article-item-footer:before, .fedlab-header-inner:after, .fedlab-header-search:after, .fedlab-article-list:after, .fedlab-article-item-footer:after {
+  content: '';
+  display: table; }
+
+.fedlab-header-inner:after, .fedlab-header-search:after, .fedlab-article-list:after, .fedlab-article-item-footer:after {
+  clear: both; }
+
+a:active,
+button,
+input,
+select,
+textarea {
+  background-color: transparent; }
+
+pre,
+textarea {
+  overflow: auto; }
+
+blockquote,
+body,
+dd,
+dir,
+dl,
+fieldset,
+figure,
+form,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+hr,
+input,
+legend,
+li,
+menu,
+ol,
+optgroup,
+p,
+pre,
+tbody,
+td,
+textarea,
+tfoot,
+th,
+thead,
+ul {
+  -webkit-tap-highlight-color: transparent;
+  margin: 0;
+  padding: 0; }
+
+::-moz-selection {
+  background: rgba(0, 0, 0, 0.12); }
+
+::selection {
+  background: rgba(0, 0, 0, 0.12); }
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+iframe,
+main,
+nav,
+section,
+summary {
+  display: block; }
+
+ol,
+ul {
+  list-style-type: none;
+  list-style-image: none; }
+
+a {
+  text-decoration: none; }
+
+a:active,
+a:hover {
+  outline: 0;
+  text-decoration: none !important; }
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  font-size: 12px;
+  -webkit-font-smoothing: antialiased; }
+
+body {
+  background-color: #f9f9f9;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #4f4f4f; }
+
+body,
+button,
+input,
+select,
+textarea {
+  font-family: PingFangSC-Light, 'helvetica neue', 'hiragino sans gb', tahoma, 'microsoft yahei ui', 'microsoft yahei', simsun, sans-serif;
+  -ms-text-autospace: ideograph-alpha ideograph-numeric ideograph-parenthesis;
+  text-autospace: ideograph-alpha ideograph-numeric ideograph-parenthesis;
+  outline: 0;
+  text-rendering: optimizeLegibility; }
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 400; }
+
+abbr,
+acronym {
+  border-bottom: 1px dotted;
+  cursor: help; }
+
+b,
+strong {
+  font-weight: 700; }
+
+code,
+kbd,
+pre,
+samp {
+  font-family: monaco, menlo, consolas, 'courier new', courier, monospace; }
+
+pre {
+  white-space: pre;
+  white-space: pre-wrap;
+  word-wrap: break-word; }
+
+q {
+  quotes: none; }
+
+q:after,
+q:before {
+  content: ''; }
+
+small {
+  font-size: 12px; }
+
+sub,
+sup {
+  position: relative;
+  line-height: 0;
+  font-size: 10px;
+  vertical-align: middle; }
+
+sub {
+  bottom: -.25em; }
+
+sup {
+  top: -.5em; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+table th {
+  text-align: left;
+  font-weight: inherit; }
+
+img {
+  border: 0;
+  width: auto\9;
+  height: auto;
+  max-width: 100%;
+  vertical-align: top;
+  -ms-interpolation-mode: bicubic; }
+
+svg:not(:root) {
+  overflow: hidden; }
+
+fieldset {
+  border: 1px solid silver;
+  margin: 0 2px;
+  padding: .35em .625em .75em; }
+
+legend {
+  border: 0;
+  white-space: normal; }
+
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
+  font-size: 100%;
+  margin: 0;
+  vertical-align: baseline; }
+
+button,
+select {
+  text-transform: none; }
+
+button,
+html input[type=button],
+input[type=reset],
+input[type=submit] {
+  -webkit-appearance: button;
+  cursor: pointer; }
+
+button[disabled],
+input[disabled] {
+  cursor: default; }
+
+input[type=radio],
+input[type=chechbox] {
+  box-sizing: border-box;
+  padding: 0; }
+
+input[type=search] {
+  -webkit-appearance: textfield;
+  box-sizing: content-box; }
+
+.comment,
+.g-tools li {
+  box-sizing: border-box; }
+
+input[type=search]::-webkit-search-decoration {
+  -webkit-appearance: none; }
+
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+  border: 0;
+  padding: 0; }
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  height: auto; }
+
+textarea {
+  resize: vertical; }
+
+option:disabled:checked,
+select:disabled option:checked {
+  color: #D2D2D2; }
+
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+  input {
+    line-height: normal !important; } }
+
+input::-moz-placeholder,
+textarea::-moz-placeholder {
+  color: #000;
+  opacity: 1; }
+
+label {
+  cursor: pointer; }
+
+select[multiple],
+select[size],
+select[size][multiple] {
+  border: 1px solid #AAA;
+  padding: 0; }
+
+audio,
+canvas,
+progress,
+video {
+  display: inline-block;
+  vertical-align: baseline; }
+
+audio:not([controls]) {
+  display: none;
+  height: 0; }
+
+[hidden],
+template {
+  display: none; }
+
+[draggable] {
+  cursor: move; }
+
+.icon {
+  display: inline-block;
+  background-repeat: no-repeat;
+  background-size: 100% 100%; }
+
+.icon-clear {
+  background-image: url("../img/icons/clear.png"); }
+
+.icon-search {
+  background-image: url("../img/icons/search.png"); }
+
+/*
+ * @Author: zuojj
+ * @Description: header 
+ * @Date: 2017-09-23 18:49:01 
+ */
+.fedlab {
+  /* nav */ }
+  .fedlab-header {
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    z-index: 10;
+    padding: 15px 0;
+    background-color: transparent;
+    box-shadow: none;
+    -webkit-transition: all .6s;
+    transition: all .6s;
+    margin-top: 0;
+    /* logo */
+    /* 导航 */
+    /* search */ }
+    .fedlab-header-inner {
+      max-width: 1200px;
+      width: 1200px;
+      margin: 0 auto; }
+    .fedlab-header.hide {
+      margin-top: -80px; }
+    .fedlab-header.white {
+      background-color: #fff;
+      box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.2); }
+      .fedlab-header.white .fedlab-header-nav-item:hover a, .fedlab-header.white .fedlab-header-nav-item.current a {
+        color: #f00; }
+    .fedlab-header-logo {
+      float: left; }
+      .fedlab-header-logo a {
+        display: block;
+        overflow: hidden;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        border: 1px solid #efefef;
+        background: url("http://zuojj.com/fedlab-logo.jpg");
+        background-size: 100% 100%;
+        text-indent: -999em; }
+    .fedlab-header-nav {
+      float: left;
+      margin-left: 128px; }
+      .fedlab-header-nav-item {
+        float: left;
+        position: relative;
+        height: 40px;
+        margin-right: 32px;
+        font-size: 16px; }
+        .fedlab-header-nav-item:hover a, .fedlab-header-nav-item.current a {
+          opacity: 1;
+          color: #fff;
+          border-color: #fff; }
+        .fedlab-header-nav-item a {
+          cursor: pointer;
+          display: block;
+          line-height: 37px;
+          padding: 0 12px;
+          border-bottom: 3px solid transparent;
+          color: grey;
+          -webkit-transition: color .3s ease-in, border-color .2s ease-in;
+          transition: color .3s ease-in, border-color .2s ease-in; }
+    .fedlab-header-search {
+      float: right; }
+      .fedlab-header-search-form {
+        display: none;
+        padding-top: 6px; }
+      .fedlab-header-search-btn, .fedlab-header-search-icon {
+        float: left;
+        width: 28px;
+        text-indent: -999em; }
+      .fedlab-header-search-btn {
+        margin-top: 6px; }
+      .fedlab-header-search-clear {
+        float: right;
+        width: 28px;
+        text-indent: -999em; }
+      .fedlab-header-search-text {
+        float: left;
+        width: 348px;
+        margin: 0 5px;
+        padding: 0 5px;
+        color: #fff;
+        background-color: transparent;
+        font-size: 16px;
+        -webkit-animation: serInput .4s 80ms ease both;
+        animation: serInput .4s 80ms ease both; }
+
+.fedlab-header-search-btn, .fedlab-header-search-icon, .fedlab-header-search-clear, .fedlab-header-search-text {
+  height: 28px;
+  overflow: hidden;
+  outline: 0;
+  border: 0; }
+
+/*
+ * @Author: zuojj
+ * @Description: Banner
+ * @Date: 2017-09-23 18:49:17 
+ */
+.fedlab-banner {
+  position: relative;
+  width: 100%;
+  height: 540px;
+  z-index: 9;
+  overflow: hidden; }
+  .fedlab-banner-inner {
+    position: absolute;
+    left: 50%;
+    width: 1920px;
+    margin-left: -960px; }
+
+.fedlab-slider {
+  position: relative;
+  height: 540px;
+  background: url("../img/banner.jpg") center center no-repeat; }
+
+/*
+ * @Author: zuojj
+ * @Description: 分割线 
+ * @Date: 2017-09-23 18:47:38 
+ */
+.fedlab-hr {
+  position: relative;
+  height: 48px;
+  margin: 30px 0 20px 0;
+  padding: 7px 0 6px; }
+  .fedlab-hr-line {
+    position: absolute;
+    left: 0;
+    top: 30px;
+    right: 0;
+    height: 1px;
+    overflow: hidden;
+    background-color: #d2d2d2; }
+  .fedlab-hr-content {
+    position: absolute;
+    left: 50%;
+    z-index: 10;
+    width: 120px;
+    height: 48px;
+    text-align: center;
+    line-height: 48px;
+    margin-left: -60px;
+    background-color: #f9f9f9; }
+
+/*
+ * @Author: zuojj
+ * @Description: 内容容器
+ * @Date: 2017-09-24 09:53:56 
+ */
+.fedlab-main {
+  width: 1200px;
+  margin: 0 auto; }
+
+/*
+ * @Author: zuojj
+ * @Description: 文章列表 
+ * @Date: 2017-09-23 22:55:47 
+ */
+.fedlab-article-list {
+  margin-left: -40px; }
+
+.fedlab-article-item {
+  float: left;
+  position: relative;
+  width: 371px;
+  margin-left: 40px;
+  margin-bottom: 40px;
+  background-color: #fff;
+  border: 1px solid #e8e8e8;
+  -webkit-transition: box-shadow .3s ease-in, -webkit-transform .2s ease-in;
+  transition: box-shadow .3s ease-in, transform .2s ease-in; }
+  .fedlab-article-item:hover {
+    -webkit-transform: translate(0, -3px);
+    transform: translate(0, -3px);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.06); }
+    .fedlab-article-item:hover .pic {
+      transform: scale(1.1); }
+  .fedlab-article-item-banner {
+    height: 205px;
+    overflow: hidden;
+    background: url("../img/article_default.gif") center no-repeat;
+    background-size: 100% auto; }
+    .fedlab-article-item-banner a {
+      display: block; }
+    .fedlab-article-item-banner .pic {
+      width: 100%;
+      height: 205px;
+      transition: transform 0.8s ease 167ms; }
+  .fedlab-article-item-title {
+    padding: 10px 15px 0; }
+    .fedlab-article-item-title h3 {
+      width: 100%;
+      overflow: hidden;
+      white-space: nowrap;
+      word-wrap: normal;
+      text-overflow: ellipsis;
+      word-break: break-all;
+      font-size: 18px; }
+      .fedlab-article-item-title h3 a {
+        color: #4f4f4f; }
+  .fedlab-article-item-footer {
+    padding: 0 15px 10px;
+    line-height: 24px;
+    font-size: 14px; }
+    .fedlab-article-item-footer .author {
+      float: left; }
+      .fedlab-article-item-footer .author-avatar {
+        box-sizing: border-box;
+        border: 1px solid #e8e8e8;
+        border-radius: 50%; }
+      .fedlab-article-item-footer .author a {
+        color: #afafaf; }
+    .fedlab-article-item-footer .date {
+      float: right;
+      color: #afafaf; }
+
+/*
+ * @Author: zuojj
+ * @Description: 查看更多  
+ * @Date: 2017-09-23 23:03:10 
+ */
+.fedlab-view-more {
+  cursor: pointer;
+  margin-bottom: 60px;
+  font-size: 16px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.03);
+  border: 1px solid #e8e8e8;
+  text-align: center;
+  display: block;
+  line-height: 44px;
+  background-color: #fff;
+  color: grey; }
+
+/*
+ * @Author: zuojj
+ * @Description: 返回顶部   
+ * @Date: 2017-09-24 09:04:31 
+ */
+.fedlab-backtop {
+  display: none;
+  position: fixed;
+  right: 50%;
+  bottom: 237px;
+  z-index: 999;
+  width: 42px;
+  height: 42px;
+  margin-right: -660px;
+  cursor: pointer;
+  background-color: #fdfdfd;
+  text-indent: -9999px;
+  border: 1px solid #efefef; }
+  .fedlab-backtop:before, .fedlab-backtop:after {
+    content: "";
+    width: 0;
+    height: 0;
+    border-width: 14px;
+    border-style: solid;
+    position: absolute;
+    left: 6px; }
+  .fedlab-backtop:before {
+    -webkit-transition: all .4s;
+    transition: all .4s;
+    border-color: transparent transparent #d5d5d5;
+    top: 0; }
+  .fedlab-backtop:after {
+    border-color: transparent transparent #fff;
+    top: 2px; }
+  .fedlab-backtop:hover:before {
+    border-color: transparent transparent #737373;
+    position: absolute;
+    left: 6px;
+    top: 0; }
+
+.fedlab-footer {
+  padding: 50px 0;
+  background-color: #fff;
+  border-top: 1px solid #d6dae4; }
+  .fedlab-footer-inner {
+    width: 1200px;
+    max-width: 1200px;
+    margin: 0 auto; }
+
+@media screen and (max-width: 640px) {
+  .fedlab-header {
+    padding: 10px 4%;
+    width: auto;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 3000;
+    background-color: #fff;
+    right: 0; }
+    .fedlab-header-inner {
+      width: auto; }
+    .fedlab-header-nav {
+      float: right;
+      margin-left: 0; }
+      .fedlab-header-nav-item {
+        margin-right: 0;
+        font-size: 14px; }
+        .fedlab-header-nav-item.current a {
+          color: #f00; }
+    .fedlab-header-search {
+      display: none; }
+  .fedlab-hr {
+    display: none; }
+  .fedlab-banner {
+    display: none; }
+  .fedlab-main {
+    width: auto; }
+  .fedlab-article-list {
+    padding: 80px 4% 0;
+    margin-left: 0; }
+  .fedlab-article-item {
+    width: 100%;
+    float: none;
+    margin-left: 0;
+    margin-bottom: 16px; }
+    .fedlab-article-item-banner {
+      height: auto;
+      min-height: 60px; }
+      .fedlab-article-item-banner .pic {
+        height: auto; }
+    .fedlab-article-item-title {
+      padding: 10px 10px 0; }
+      .fedlab-article-item-title h3 {
+        font-size: 14px; }
+    .fedlab-article-item-footer {
+      font-size: 12px;
+      padding: 0 10px 10px; }
+  .fedlab-view-more {
+    margin: 0 4% 16px;
+    position: relative;
+    z-index: 3;
+    font-size: 14px; }
+  .fedlab-footer {
+    width: 100%;
+    padding: 20px 0;
+    text-align: center;
+    overflow: hidden; }
+    .fedlab-footer-inner {
+      width: auto; }
+  .fedlab-article {
+    margin: 60px 0 0; }
+    .fedlab-article-details {
+      float: none;
+      width: 100%; }
+    .fedlab-article-con {
+      border: none;
+      padding: 30px 5%; }
+      .fedlab-article-con-title h3 {
+        font-size: 18px;
+        margin-bottom: 20px; }
+      .fedlab-article-con-meta {
+        margin-bottom: 15px; }
+      .fedlab-article-con-prevnext .prev-page,
+      .fedlab-article-con-prevnext .next-page {
+        float: none;
+        width: 100%;
+        max-width: 100%;
+        margin-bottom: 6px; }
+  .fedlab-sidebar {
+    display: none; } }
