@@ -1,5 +1,7 @@
 ---
-title: Hello World
+title: 煦涵说Yarn
+author: zuojj
+thumb: http://www.zuojj.com/wp-content/uploads/2017/05/0.jpeg
 ---
 Welcome to [Hexo](https://hexo.io/)! This is your very first post. Check [documentation](https://hexo.io/docs/) for more info. If you get any problems when using Hexo, you can find the answer in [troubleshooting](https://hexo.io/docs/troubleshooting.html) or you can ask me on [GitHub](https://github.com/hexojs/hexo/issues).
 

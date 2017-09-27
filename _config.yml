@@ -78,4 +78,8 @@ theme: fedlab
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
-  type:
+  type: git
+  message: FEDLAB at {{ now('YYYY-MM-DD HH:mm:ss') }}
+  repo: git@github.com:fedlab-team/fedlab-team.github.io.git
+  branch: master
+
