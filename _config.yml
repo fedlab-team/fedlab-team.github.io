@@ -4,10 +4,11 @@
 
 # Site
 title: FED实验室
-subtitle: 
-description:
+subtitle: 专注WEB端开发和用户体验
+keywords: FED，前端开发，用户体验，nodejs，webpack，vue，react
+description: 崇尚开源，热爱分享，极客精神，持续学习
 author: 煦涵
-language: 
+language: zh-CN
 timezone:
 
 # URL

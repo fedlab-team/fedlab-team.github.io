@@ -1,6 +1,6 @@
 ---
 title: 煦涵说Yarn
-author: zuojj
+author: 煦涵
 thumb: http://www.zuojj.com/wp-content/uploads/2017/05/0.jpeg
 ---
 
