@@ -20,7 +20,6 @@
                     <a href="<%=url_for(post.path)%>" hidefocus="true"><%=config.url + url_for(post.path)%></a>）
                 </p>
             </div>
-            <%console.log(post.prev)%>
             <%if(post.prev || post.next){%>
             <div class="fedlab-article-con-prevnext">
                 <%if(post.prev){%>
