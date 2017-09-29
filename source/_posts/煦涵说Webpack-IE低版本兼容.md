@@ -1,308 +1,193 @@
 ---
-title: 煦涵说Flow
-author: 煦涵
-thumb: http://www.zuojj.com/wp-content/uploads/2017/05/flow.png
+title: 煦涵说Webpack-IE低版本兼容
+author:
+   nick: 煦涵
+   github_name: zuojj
+date: 2017-09-03 17:00
+categories: 煦涵说
+tags: webpack
+thumb: http://www.zuojj.com/wp-content/uploads/2017/05/webpack1.jpg
 ---
-JSON(Javascript Object Notaion, javascript 对象表示法)， 是一种数据交换格式，能够在服务器端交换数据， 2001年由Douglas Crockford提出，目的是取代繁琐笨重的XML格式。
 
-JSON 数据格式的优点：
-* 与语言无关的文本数据格式
-* 轻量、简单、易维护
-* 是javascript编程语言的一个子集(**Standard ECMA-262 3rd Edition - December 1999**)， 符合javascript 语言语法，可以使用javascript提供的方法直接解析处理
+[Webpack](https://webpack.js.org/)，Webpack 是一个前端资源加载/打包工具，现在版本已经 release 到 v2.6.1，今天的文章不支持介绍Webpack的API及使用，而是对最近项目开发中使用Webpack打包时处理IE低版本(IE8及以下)浏览器兼容问题做一次总结。
 
-JSON 建立在两种数据结构上：
-* 键 / 值对：各种语言中可以为 字符串、对象、数组或者哈希表
-* 有序列表（值）：各种语言中实现为数组、向量、列表或者序列
+![图片描述][1]
 
-## JSON的基本语法：
-* JSON 对象
-```json
+PC端项目前端基础技术选型jQuery + ES6 + EJS + Babel + Webpack：
+* jQuery：提供选择器和ajax接口兼容支持；
+* ES6：跟进前端趋势，方便向后兼容；
+* EJS：提供前端模板引擎支持；
+* Babel：提供 ES6 转码支持；
+* Webpack: 提高前端资源加载/打包；
+
+项目开发过程都在 Chrome 浏览器中，一切都OK，没有任何问题，当在IE9以下浏览器中调试发现好多坑，现总结如下，以后新手参考。
+
+## Case One: `default` 、 `class`、`catch` ES3中保留字问题
+报错信息：
+```
+SCRIPT1048: 缺少标识符
+```
+对应代码：
+```js
+e.n = function (t) {
+    var n = t && t.__esModule ? function () {
+        return t.default
+    } : function () {
+        return t
+    };
+    return e.d(n, "a", n), n
+}
+```
+网上查找资料，webpack有一款loader插件[es3ify-loader](https://www.npmjs.com/package/es3ify-loader)来处理ES3的兼容问题，修改webpack配置，问题解决，添加规则如下：
+```js
+module: {
+    rules: [{
+            test: /.js$/,
+            enforce: 'post', // post-loader处理
+            loader: 'es3ify-loader'
+        }
+    ]
+}
+```
+这个loader是干啥用的捏，就是把这些保留字给你加上引号，使用字符串的形式引用，请看实例：
+```js
+// 编译前
+function(t) { return t.default; }
+
+// 编译后
+function(t) { return t["default"]; }
+```
+
+## Case Two: uglify-js产生问题
+重新构建，在IE低版本浏览器预览，使用 `webpack.optimize.UglifyJsPlugin` 压缩时，又报上面同样的错误了，重新采用 beauty:true, build 发现引号被压缩掉了，究其原因，研究了下uglify-js默认配置，发现了 `compress.properties` 属性，增加build options如下，问题解决：
+```js
+new webpack.optimize.UglifyJsPlugin({
+    compress: {
+        properties: false,
+        warnings: false
+    },
+    output: {
+        beautify: true
+    },
+    sourceMap: false
+})
+```
+
+## Case Three: uglify-js问题
+重新构建，在IE低版本浏览器预览，使用 `webpack.optimize.UglifyJsPlugin` 压缩时，又报上面同样的错误了，报错代码：
+```js
 {
-    "key": value
-}
-```
-* JSON 数组
-```json
-[value, value, value]
-```
-* value 可取值
-value 可以是 String(必须使用双引号包裹)、Number、Boolean、null、Object、Array, 这些形式可以嵌套，value值不能是八进制、十六进制（0xF0F）、undefined、function、日期对象，看下面示例：
-
-合格的 JSON 格式：
-```js
-{ 
-    "name": "煦涵", 
-    "name": null, 
-    "male": true, 
-    "age": 23
-}
-
-{ 
-    "brother": ["煦涵1", "煦涵2"]
-}
-
-{ 
-    "brother": {
-        "煦涵1": {
-            "age": 32
-        },
-        "煦涵2": {
-            "age": 30
-        }
+    catch: function (t) {
+        return this.then(null, t)
     }
 }
-
-[{
-    "name": "煦涵”
-    "age": 30
-},{
-    "name": "张三”
-    "age": 27
-}]
 ```
-不合格的 JSON 格式：
+继续查找uglify-js配置，发现 `output.quote_keys`，修改build options，问题解决：
 ```js
-// key 必须用双引号包裹，value 如果是字符串必须用双引号包裹
-
-{ 'name': "煦涵" } 
-[1, 2, 3, 4, oxFOF] 
-{ 'name': undefined } 
-{ 
-    'name': function() { 
-        return "煦涵"
-    } 
-}
-{ 'name': new Date() }  
-```
-如果value的一个String（双引号包围）内包含 `\"`、`\\`、`\/`、`\b`、`\f`、`\n`、`\r`、`\t`、`\u001f` 需要使用反斜杠
-如果value的一个Number，不能使用八进制和十六进制数值
-PS： value对空格没有限制要求
-
-
-## JSON 对象
-聊完 JSON 下面我们来聊聊 JSON 对象，javascript 在 ES5中新增了 JSON 对象，用来处理 JSON 文本数据，实现字符串与 JSON 对象间的相互转换，`JSON.stringify ( value [ , replacer [ , space ] ] )` 和 `JSON.parse ( text [ , reviver ] )`， 前者是把 JSON 对象转换为 JSON 字符串，后者的把 JSON 字符串解析为 JSON 对象，下面来详细看看这个两个方法。
-
-### JSON.stringify ( value [ , replacer [ , space ] ] )
-
-1. 第一个参数： Value 必须项，可以是 Object, Array, String, Boolean, Number, Null.看几个例子：
-
-```js
-JSON.stringify({
-    "name": "煦涵",
-    "age" : 28,
-    "male" : true,
-    "brother": [1, 2, 3],
-    "parent": {
-        "father" : {
-            "name": "name"
-        },
-        "mother": {
-            "name": "name"
-        }
+new webpack.optimize.UglifyJsPlugin({
+    compress: {
+        properties: false,
+        warnings: false
     },
-    "other": null
-})
-
-// result
-"{"name":"煦涵","age":28,"male":true,"brother":["B1","B2","B3"],"parent":{"father":{"name":"name"},"mother":{"name":"name"}},"other":null}" 
-```
-
-当待转换值不是 JSON 的基本类型时：
-* 原始对象 item 值是 undefined、函数或 XML 对象，值会被过滤；
-* 数组 item 是 undefined、函数或 XML 对象，值会被转成 null；
-* 正则对象会被转换成空对象；
-* 对象的不可遍历属性会被忽略；
-* 八进制和十六进制会被转换成十进制;
-* 特殊字符需要转义成反斜杠
-
-```js
-JSON.stringify({
-    "name": undefined,
-    "age" : function() {return 28},
-    "male" : /male/g,
-    "brother": [undefined, function() {return abc}, "B3", 0xFOF],
-    "parent": {
-        "father" : {
-            "name": undefined
-        },
-        "mother": {
-            "name": "name"
-        }
+    output: {
+        beautify: true,
+        quote_keys: true
     },
-    "other": null
-})
-
-// result: 正则被转出了空对象，undefined, function 被忽略或者转成 null
-
-"{"male":{},"brother":[null,null,"B3", 3855],"parent":{"father":{},"mother":{"name":"name"}},"other":null}"
-
-/* 不可遍历属性 */
-var demo = {};
-Object.defineProperties(demo, {
-    "name": {
-        value: "煦涵",
-        enumerable: false
-    },
-    "age": {
-        value: 28,
-        enumerable: true
-    }
-})
-JSON.stringify(demo);
-
-// enumerable: 当且仅当该属性的 enumerable 为 true 时，该属性才能够出现在对象的枚举属性中,
-// result: name 属性会被过滤
-"{"age":28}"
-
-/* 特殊字符处理-01 */
-JSON.stringify({
-    "special01": "回车 \r，换行 \n，退格 \b，换页 \f，Tab \t",
-    "special02": "双引号 \"，单引号 ', 斜杠 \/, 反斜杠 \\",
-    "special03": "unicdoe字符 \u001f"
-})
-
-// result
-"{"special01":"回车 \r，换行 \n，退格 \b，换页 \f，Tab \t","special02":"双引号 \"，单引号 ', 斜杠 /, 反斜杠 \\","special03":"unicdoe字符 \u001f"}"
-
-/* 特殊字符处理-02 */
-var demo = {}
-demo.special01 = '回车 \r，换行 \n，退格 \b，换页 \f，Tab \t';
-demo.special02 = '双引号 "，斜杠 /, 反斜杠\，end ';
-demo.special03 = 'unicdoe字符 \u001f';
-JSON.stringify(demo);
-
-// result, 双引号被转义了，反斜杠被忽略了
-"{"special01":"回车 \r，换行 \n，退格 \b，换页 \f，Tab \t","special02":"双引号 \"，斜杠 /, 反斜杠，end ","special03":"unicdoe字符 \u001f"}"
+    sourceMap: false
+}),
 ```
-
-2. 第二个参数：replacer可选项，可以是 array or function
-* 当replacer 是数组时，对第一个参数 value进行过滤，key 不在数组里的不会输出，这里需要注意的是，当第一个参数为Object时才有效，如果为Array，无效，看下面例子：
-* 当replacer 是函数时，递归遍历所有的键，可以对对象进行format and replace 等操作
-
+编译后：
 ```js
-/* replacer 为数组 */
-JSON.stringify({
-    "0": "安徽省",
-    "1": "蚌埠市",
-    "2": "固镇县"
-}, [0,1])
-// result:
-"{"0":"安徽省","1":"蚌埠市"}"
-
-JSON.stringify([
-    "安徽省",
-    "蚌埠市",
-    "固镇县"
-], [0,1])
-
-// result
-"["安徽省","蚌埠市","固镇县"]"
-
-
-/* replacer 为函数 */
-JSON.stringify({
-    "0": "安徽省",
-    "1": "蚌埠市",
-    "2": "固镇县"
-}, function(key, value) {
-    // key: '', value: {0: "安徽省", 1: "蚌埠市", 2: "固镇县"}
-    console.log(key, value);
-    return value[0] + value[1] + value[2];
-})
-// result
-""安徽省蚌埠市固镇县""
-```
-
-3. 第三个参数：space 可选项，用于增加format字符的可读性，可取值 Number, String, 但长度不超过10个字符
-```js
-JSON.stringify({"name": "煦涵", "age": 28, "male": true, "other": null}, '', 4)
-
-// result 
-"{
-    "name": "煦涵",
-    "age": 28,
-    "male": true,
-    "other": null
-}"
-
-JSON.stringify({"level1": {"level2": {"level3": {"name": "煦涵"} } } }, '', '|---')
-
-// result: 展示属性结构很直观
-"{
-|---"level1": {
-|---|---"level2": {
-|---|---|---"level3": {
-|---|---|---|---"name": "煦涵"
-|---|---|---}
-|---|---}
-|---}
-}"
-```
-4. 特殊情况
-还记得上面的几种情况吧，当对象不是原始对象时，处理方式有所不同，比如正则表达式时，会返回空对象，日期对象时返回日期字符串;参看文档是，JSON.stringify发现参数对象有toJSON方法，就直接使用这个方法的返回值作为参数，而忽略原对象的其他参数。
-
-```js
-JSON.stringify({
-    "name": "煦涵",
-    "age": 28,
-    "toJSON": function() {
-        return this.name + '年龄是' + this.age + '岁'
-    }
-})
-// result:
-""煦涵年龄是28岁""
-
-/* 日期对象Date原型上包含toJSON 方法，`Date.prototype.toJSON ( key )` */
-var date = new Date();
-date.toJSON();
-JSON.stringify(date);
-
-/* RegExp 对象 JSON.stringify 默认会把正则转换成空对象，我们可以使用toJSON, 把正则表达式转换成字符串 */
-RegExp.prototype.toJSON = RegExp.prototype.toString;
-JSON.stringify(/abc/g)
-// result
-""/abc/g""
-```
-
-
-### JSON.parse ( text [ , reviver ] )
-JSON.parse为 JSON.stringify的逆运算，转换时 text 必须符合JSON的语法格式， 不然会报错，reviver 参数 和 JSON.stringify 的参数 replacer类似， 但是遍历顺序和replacer相反。
-```js
-JSON.parse('{"name":"煦涵","age":28,"male":true,"brother":["B1","B2","B3"],"parent":{"father":{"name":"name"},"mother":{"name":"name"}},"other":null}' )
-
-/* result:
 {
-    "name": "煦涵",
-    "age" : 28,
-    "male" : true,
-    "brother": ["B1", "B2", "B3"],
-    "parent": {
-        "father" : {
-            "name": "name"
-        },
-        "mother": {
-            "name": "name"
-        }
-    },
-    "other": null
+    "catch": function(t) {
+        return this.then(null, t);
+    }
 }
-*/
-
-JSON.parse('{"level1": {"level2": {"name": "煦涵"} } }', function(key, value) {
-    // level2 Object {name: "煦涵"}
-    // level1 Object {level2: Object}
-    // Object {level1: Object}
-    console.log(key, value);
-    return value;
+```
+## Case Four: uglify-js问题
+重新构建，在IE低版本浏览器预览，报错信息如下：
+```html
+SCRIPT3126: 无法设置未定义或 null 引用的属性
+```
+继续分析压缩后代码，发现还是uglify-js问题，其mangle 配置属性 `mangle.screw_ie8` 默认为 true， 什么意思捏，意思就是把支持IE8的代码clear掉，screw you => 去你的，修改压缩配置项，重新编译，问题解决：
+```js
+new webpack.optimize.UglifyJsPlugin({
+    compress: {
+        properties: false,
+        warnings: false
+    },
+    output: {
+        beautify: true,
+        quote_keys: true
+    },
+    mangle: {
+        screw_ie8: false
+    },
+    sourceMap: false
 })
-
-// result
-{"level1":{"level2":{"name":"煦涵"}}}
+```
+## Case Five: ES5的API兼容报错
+在 webpack 的 entry 入口文件top引入 `es5-shim` 问题解决
+```js
+require('es5-shim');
+require('es5-shim/es5-sham');
+```
+## Case Six: Console.log 问题
+在 webpack 的 entry 入口文件top引入 `console-polyfill` 问题解决
+```js
+require('console-polyfill');
 ```
 
-## 参考文档：
-[http://www.ecma-international.org/ecma-262/5.1/#sec-15.12](http://www.ecma-international.org/ecma-262/5.1/#sec-15.12)
-[https://github.com/douglascrockford/JSON-js/blob/master/json2.js](https://github.com/douglascrockford/JSON-js/blob/master/json2.js)
-[http://www.json.org/](http://www.json.org/)
+## Case Seven: Promise 兼容
+在 webpack 的 entry 入口文件top引入 `es6-promise` 问题解决
+```js
+require('es6-promise');
+```
+
+## Case Eight: Object.defineProperty 问题
+这个case 应该说是最难搞的一个case了，耗时也比较长，关键点在于使用 `es5-shim`/`es5-sham`也有问题，查看你官网发现在低版本浏览器也会有问题，官网描述如下：
+> ⚠️ Object.defineProperty
+> In the worst of circumstances, IE 8 provides a version of this method that only works on DOM objects. This sham will not be installed. The given version of defineProperty will throw an exception if used on non-DOM objects.
+> In slightly better circumstances, this method will silently fail to set "writable", "enumerable", and "configurable" properties.
+> Providing a getter or setter with "get" or "set" on a descriptor will silently fail on engines that lack "defineGetter" and "defineSetter", which include all versions of IE.
+https://github.com/es-shims/es5-shim/issues#issue/5
+
+那这个Object.defineProperty 是如何产生的呢，这个是babel编译后产生的，当我们在代码使用 `import` `export` ES6 Module时出现的，那你可能最直接的想法就是我不用ES6 Module了，改用Commonjs规范，OK，修改后编译，确实解决了问题，但是查看代码里还是有一段代码的，如下：
+```js
+e.d = function(t, n, r) {
+    e.o(t, n) || Object.defineProperty(t, n, {
+        "configurable": !1,
+        "enumerable": !0,
+        "get": r
+    });
+}, e.n = function(t) {
+    var n = t && t.__esModule ? function() {
+        return t["default"];
+    } : function() {
+        return t;
+    };
+    return e.d(n, "a", n), n;
+}, e.o = function(t, e) {
+    return Object.prototype.hasOwnProperty.call(t, e);
+}
+```
+看代码已经做了容错判断。
+
+## Case Nine: Object.defineProperty 问题
+重新构建，加入 `json3` 处理 JSON 对象兼容时，代码在此处抛出了异常：
+```js
+var hasGetter = 'get' in descriptor;
+var hasSetter = 'set' in descriptor;
+if (!supportsAccessors && (hasGetter || hasSetter)) {
+    throw new TypeError(ERR_ACCESSORS_NOT_SUPPORTED);
+}
+```
+分析supportsAccessors代码逻辑：
+```js
+var supportsAccessors = owns(prototypeOfObject, '__defineGetter__');
+```
+通过断点调试，supportsAccessors值为false且hasGetter或者hasSetter时抛出了异常，也就是说当前js引擎不支持访问器属性，却在属性描述符中设置了get，set,那么就会抛出异常。查看 [defineGetter](“defineGetter”的兼容情况是只兼容IE11) 的兼容情况，只兼容IE11，虽然IE9、IE10同样不支持defineGetter,不过他们直接支持Object.defineProperty方法和get语法，无需sham，所以代码并不会走到异常这里。但是IE8以下就扯淡了。解决这种情况只能修改源代码了。
+
+至此，Webpack打包时，IE低版本浏览器(IE8及以下)遇到的兼容问题就总结这里，如果你有新的问题，欢迎留言。
 
 感谢您的阅读

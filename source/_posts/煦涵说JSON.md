@@ -1,6 +1,11 @@
 ---
 title: 煦涵说JSON
-author: 煦涵
+author:
+   nick: 煦涵
+   github_name: zuojj
+date: 2017-09-03 17:00
+categories: 煦涵说
+tags: json
 thumb: http://www.zuojj.com/wp-content/uploads/2017/05/0-1.jpeg
 ---
 JSON(Javascript Object Notaion, javascript 对象表示法)， 是一种数据交换格式，能够在服务器端交换数据， 2001年由Douglas Crockford提出，目的是取代繁琐笨重的XML格式。

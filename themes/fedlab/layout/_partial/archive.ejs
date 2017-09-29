@@ -1,3 +1,6 @@
+<%- partial('./header', null, {cache: !config.relative_link, index: true}) %>
+<%- partial('./banner', null, {cache: !config.relative_link}) %>
+
 <div class="fedlab-main">
     <div class="fedlab-hr">
         <div class="fedlab-hr-line"></div>
@@ -9,6 +12,7 @@
                 _thumb = post.thumb || theme.thumbs[parseInt(Math.random() * 5)],
                 _title = post.title,
                 _date  = post.date.format('YYYY-MM-DD');
+                _author = post.author;
                 console.log(post.thumb);
         %>
         <div class="fedlab-article-item">
@@ -24,9 +28,9 @@
             </div>
             <div class="fedlab-article-item-footer">
                 <div class="author">
-                    <a href="http://zuojj.com">
-                        <img class="author-avatar" src="http://zuojj.com/fedlab-logo.jpg" width="24" height="24">
-                        <span class="author-name">煦涵</span>
+                    <a href="https://github.com/<%=_author.github_name%>">
+                        <img class="author-avatar" src="https://avatars3.githubusercontent.com/u/5378965?v=4&s=460" width="24" height="24">
+                        <span class="author-name"><%=_author.nick%></span>
                     </a>
                 </div>
                 <div class="date"><%=_date%></div>

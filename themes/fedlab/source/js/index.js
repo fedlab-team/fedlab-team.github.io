@@ -3,12 +3,15 @@
         headerH = header.clientHeight;
 
     window.addEventListener('scroll', function () {
-        let scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+        let scrollTop = document.documentElement.scrollTop || document.body.scrollTop,
+            main = document.querySelector('.fedlab-main');
 
-        if (scrollTop > 0) {
-            header.className.indexOf(' white') < 0 && (header.className += ' white');
-        } else if (scrollTop === 0) {
-            header.className = header.className.replace(/\swhite/, '');
+        if(main && !/fedlab-article/.test(main.className)) {
+            if (scrollTop > 0) {
+                header.className.indexOf(' white') < 0 && (header.className += ' white');
+            } else if (scrollTop === 0) {
+                header.className = header.className.replace(/\swhite/, '');
+            }
         }
 
         if (scrollTop > headerH) {

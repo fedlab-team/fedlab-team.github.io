@@ -20,18 +20,14 @@
     <meta name="format-detection" content="telephone=no">
 
 
-    <link type="image/x-icon" href="<%=url_for('img/favicon.ico')%>" rel="icon">
-    <link type="image/x-icon" href="<%=url_for('img/favicon.ico')%>" rel="Shortcut Icon">
-    <link type="image/x-icon" href="<%=url_for('img/favicon.ico')%>" rel="bookmark">
-    <link rel="apple-touch-icon-precomposed" href="<%=url_for('img/touch-translation.png')%>">
-
-
-    <title>
+    <link type="image/x-icon" href="<%=url_for('/favicon.ico')%>" rel="icon">
+    <link type="image/x-icon" href="<%=url_for('/favicon.ico')%>" rel="Shortcut Icon">
+    <link type="image/x-icon" href="<%=url_for('/favicon.ico')%>" rel="bookmark">
+    <link rel="apple-touch-icon-precomposed" href="<%=url_for('/touch-translation.png')%>">
     <%if(page && page.title){%>
-        <%=page.title%> - <%=config.title%>
+        <title><%=page.title%> - <%=config.title%></title>
     <%}else{%>
-        <%=config.title%>
+        <title><%=config.title%> - <%=config.subtitle%></title>
     <%}%>
-    </title>
     <%- css('css/fedlab') %>
 </head>

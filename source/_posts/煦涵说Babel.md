@@ -1,6 +1,11 @@
 ---
 title: 煦涵说Babel
-author: 煦涵
+author:
+   nick: 煦涵
+   github_name: zuojj
+date: 2017-09-03 17:00
+categories: 煦涵说
+tags: babel
 thumb: http://www.zuojj.com/wp-content/uploads/2017/06/babel.jpg
 ---
 [Babel](http://babeljs.io/)，下一代javascript编译器，当前版本 `v2.4.0` ，它可以处理ES6的所有新语法，并内置了React JSX扩展及Flow类型注解支持，如果对Flow不是很了解可以查看FED实验室微信公众号文章[煦涵说Flow](https://segmentfault.com/a/1190000009639356)。
