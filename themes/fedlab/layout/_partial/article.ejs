@@ -5,7 +5,7 @@
             <div class="fedlab-article-con-title">
                 <h3 title="<%=post.title%>"><%=post.title%></h3>
             </div>
-            <p class="fedlab-article-con-meta">By <a href="http://www.zuojj.com"><%=post.author%></a> At <%=post.date.format('YYYY-MM-DD hh:mm:ss')%></p>
+            <p class="fedlab-article-con-meta">By <a href="https://github.com/<%=post.author.github_name%>" target="_blank"><%=post.author.nick%></a> At <%=post.date.format('YYYY-MM-DD hh:mm:ss')%></p>
             <div class="fedlab-article-con-banner">
                 <img src="<%=post.thumb%>" alt="<%=post.title%>">
             </div>
