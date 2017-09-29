@@ -534,7 +534,7 @@ template {
       margin-bottom: 40px; }
     .fedlab-article-con-meta {
       color: #979797;
-      font-size: 12px;
+      font-size: 14px;
       overflow: hidden;
       margin-bottom: 30px; }
     .fedlab-article-con-banner {
@@ -758,7 +758,7 @@ pre code {
   padding: 10px 15px;
   color: #4d4d4c;
   overflow: auto;
-  margin: 0; }
+  margin: 0 0 1.4em 0; }
 
 .highlight figcaption {
   zoom: 1;
