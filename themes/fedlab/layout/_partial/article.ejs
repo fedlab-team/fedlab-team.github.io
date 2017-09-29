@@ -20,10 +20,17 @@
                     <a href="<%=url_for(post.path)%>" hidefocus="true"><%=config.url + url_for(post.path)%></a>）
                 </p>
             </div>
+            <%console.log(post.prev)%>
+            <%if(post.prev || post.next){%>
             <div class="fedlab-article-con-prevnext">
-                <p class="prev-page">上一篇: <a href="http://prev.html" rel="prev" hidefocus="true">2017用户体验行业调查报告</a></p>
-                <p class="next-page">下一篇: <a href="http://next.html" rel="next" hidefocus="true">互联网金融体验设计方法库</a></p>
+                <%if(post.prev){%>
+                <p class="prev-page">上一篇: <a href="<%=url_for(post.prev.path)%>" title="<%=post.prev.title%>" rel="prev" hidefocus="true"><%=post.prev.title%></a></p>
+                <%}%>
+                <%if(post.next){%>
+                <p class="next-page">下一篇: <a href="<%=url_for(post.next.path)%>" title="<%=post.next.title%>" rel="next" hidefocus="true"><%=post.next.title%></a></p>
+                <%}%>
             </div>
+            <%}%>
         </div>
     </div>
     <div class="fedlab-sidebar">
