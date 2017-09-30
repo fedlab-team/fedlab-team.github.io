@@ -103,12 +103,3 @@ info Visit https://yarnpkg.com/en/docs/cli/run for documentation about this comm
 * Visual Studio Code: Flow-Language-Support 
 * Sublime Text:Flow 和 SublimeLinter-flow
 更多请参考：https://flow.org/en/docs/editors/
-
-感谢您的阅读
-
-<div style="margin:5px auto;padding-top:1.2em;padding-bottom:0.6em;">
-    <div style="font-size:1em; border-style: solid none none; border-top-width: 1px; border-color: rgb(17, 17, 17); color: rgb(204, 204, 204);"></div>
-    <div style="margin-top: -0.7em;text-align:center;line-height:1.4;">
-    <span style="padding:8px 23px;background-color:#fff;color:#000;margin-top:-1em;">EOF</span>
-    </div>
-</div>

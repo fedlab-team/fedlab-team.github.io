@@ -309,5 +309,3 @@ JSON.parse('{"level1": {"level2": {"name": "煦涵"} } }', function(key, value) 
 [http://www.ecma-international.org/ecma-262/5.1/#sec-15.12](http://www.ecma-international.org/ecma-262/5.1/#sec-15.12)
 [https://github.com/douglascrockford/JSON-js/blob/master/json2.js](https://github.com/douglascrockford/JSON-js/blob/master/json2.js)
 [http://www.json.org/](http://www.json.org/)
-
-感谢您的阅读

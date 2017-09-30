@@ -189,5 +189,3 @@ var supportsAccessors = owns(prototypeOfObject, '__defineGetter__');
 通过断点调试，supportsAccessors值为false且hasGetter或者hasSetter时抛出了异常，也就是说当前js引擎不支持访问器属性，却在属性描述符中设置了get，set,那么就会抛出异常。查看 [defineGetter](“defineGetter”的兼容情况是只兼容IE11) 的兼容情况，只兼容IE11，虽然IE9、IE10同样不支持defineGetter,不过他们直接支持Object.defineProperty方法和get语法，无需sham，所以代码并不会走到异常这里。但是IE8以下就扯淡了。解决这种情况只能修改源代码了。
 
 至此，Webpack打包时，IE低版本浏览器(IE8及以下)遇到的兼容问题就总结这里，如果你有新的问题，欢迎留言。
-
-感谢您的阅读
