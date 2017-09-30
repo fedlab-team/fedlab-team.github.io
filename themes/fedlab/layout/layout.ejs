@@ -2,6 +2,10 @@
 <%- partial('_partial/head') %>
 
 <body>
+    <%- partial('_partial/header', null, {cache: !config.relative_link, index: true}) %>
+    <%if(is_home()){%>
+    <%- partial('_partial/banner', null, {cache: !config.relative_link}) %>
+    <%}%>
     <%- body %>
     <%- partial('_partial/footer', null, {cache: !config.relative_link}) %>
     <div class="fedlab-backtop">返回顶部</div>
