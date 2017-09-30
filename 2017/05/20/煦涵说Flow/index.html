@@ -1,0 +1,158 @@
+
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
+    <meta name="author" content="煦涵" />
+    <meta name="designer" content="煦涵" />
+    <meta name="description" content="崇尚开源，热爱分享，极客精神，持续学习">
+    <meta name="keywords" content="FED，前端开发，用户体验，nodejs，webpack，vue，react">
+    <meta name="rating" content="general" /> 
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=yes" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="robots" content="index, follow" />
+
+    <meta id="Copyright" content="Copyright 2015-2017 Fedlab. All Rights Reserved">
+    <meta name="format-detection" content="telephone=no">
+
+
+    <link type="image/x-icon" href="/favicon.ico" rel="icon">
+    <link type="image/x-icon" href="/favicon.ico" rel="Shortcut Icon">
+    <link type="image/x-icon" href="/favicon.ico" rel="bookmark">
+    <link rel="apple-touch-icon-precomposed" href="/touch-translation.png">
+    
+        <title>煦涵说Flow - FED实验室</title>
+    
+    <link rel="stylesheet" href="/css/fedlab.css">
+</head>
+
+
+<body>
+    
+<header class="fedlab-header white">
+    <div class="fedlab-header-inner">
+        <div class="fedlab-header-logo">
+            <a href="/">FEDLAB(前端开发实验室)</a>
+        </div>
+        <nav class="fedlab-header-nav">
+    <ul class="fedlab-header-nav-list">
+        <li class="fedlab-header-nav-item current">
+            <a href="/">首页</a></li>
+        <li class="fedlab-header-nav-item">
+            <a href="/content.html">文档</a>
+        </li>
+        <li class="fedlab-header-nav-item">
+            <a href="/about.html">我们</a>
+        </li>
+    </ul>
+</nav>
+
+        <div class="fedlab-header-search">
+            <button class="fedlab-header-search-btn icon icon-search" type="button" title="搜索">搜索</button>
+            <div class="fedlab-header-search-form">
+                <button type="button" class="fedlab-header-search-icon icon icon-search">搜索</button>
+                <input type="text" class="fedlab-header-search-text" placeholder="请输入想要搜索的内容">
+                <button type="button" class="fedlab-header-search-clear icon icon-clear">关闭</button>
+            </div>
+        </div>
+    </div>
+</header>
+    
+    
+<div class="fedlab-main fedlab-article">
+    <div class="fedlab-article-details">
+        <div class="fedlab-article-con">
+            <div class="fedlab-article-con-title">
+                <h3 title="煦涵说Flow">煦涵说Flow</h3>
+            </div>
+            <p class="fedlab-article-con-meta">By <a href="https://github.com/zuojj" target="_blank">煦涵</a> At 2017-05-20 05:00:00</p>
+            <div class="fedlab-article-con-banner">
+                <img src="http://www.zuojj.com/wp-content/uploads/2017/05/flow.png" alt="煦涵说Flow">
+            </div>
+            <div class="fedlab-article-con-text">
+                <div class="content-text">
+                <p><a href="https://flow.org" target="_blank" rel="external">Flow</a>是Facebook出品的一个JavaScript代码的静态类型检查工具，它做了很多处理，使您的代码更快，更智能，更自信，更好的适应性。现在已经在前端比较流行的React 、Vue 等框架中得到使用。今天煦涵就和大家一起来学习Flow以及在实际项目中的使用。</p>
+<h2 id="Flow-安装"><a href="#Flow-安装" class="headerlink" title="Flow 安装"></a>Flow 安装</h2><p>这里我们选择使用 <code>yarn</code>，当前你也可以使用 <code>npm</code>, 如果你对 <code>yarn</code>不是很了解，建议你阅读 <strong>煦涵说Yarn</strong>。首先我们先初始化一个 <code>flow</code> 项目，安装完编译器，然后再安装 <code>flow</code> 。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">mkdir flow-project</div><div class="line">cd flow-project</div><div class="line">yarn init</div><div class="line"></div><div class="line">yarn add --dev babel-cli babel-preset-flow babel-preset-es2015</div></pre></td></tr></table></figure></p>
+<p>项目根目录下创建 <code>.babelrc</code> 文件，并增加如下内容：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    <span class="string">"presets"</span>: [<span class="string">"flow"</span>, <span class="string">"es2015"</span>]</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>安装 Flow:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yarn add --dev flow-bin</div></pre></td></tr></table></figure></p>
+<p>运行 flow：<br>需要在根目录下新建一个 <code>.flowconfig</code> 文件，不然会报找不到该文件错误。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yarn run flow</div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">yarn run v0.16.1</div><div class="line">$ &quot;/flow-proj/node_modules/.bin/flow&quot; </div><div class="line">Launching Flow server for /flow-proj</div><div class="line">Spawned flow server (pid=17242)</div><div class="line">Logs will go to /private/tmp/flow/zSvue-workspacezSflow-proj.log</div><div class="line">No errors!</div><div class="line">✨  Done in 2.48s.</div></pre></td></tr></table></figure>
+<h2 id="Flow-使用"><a href="#Flow-使用" class="headerlink" title="Flow 使用"></a>Flow 使用</h2><p>我们先在根目录下新建src目录，并新建一个index.js文件。同时在 <code>package.json</code> 文件中增加下面scripts内容，以方便我们后期的命令行编译。<br>index.js<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// @flow</span></div><div class="line">[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>].map(<span class="function">(<span class="params">item:number, index</span>) =&gt;</span> &#123;</div><div class="line">    <span class="keyword">return</span> item * item;</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p>package.json<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="string">"scripts"</span>: &#123;</div><div class="line">    <span class="string">"build"</span>: <span class="string">"yarn run flow &amp;&amp; babel src -d lib"</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>运行 <code>yarn run build</code>， 没有报错， 会在生成lib文件目录，index.js的 flow type 注释会被 remove 掉，同时进行了箭头函数到ES5的转换。<br>如果我修改上面index.js的代码：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// @flow</span></div><div class="line">[<span class="string">'1'</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>].map(<span class="function">(<span class="params">item:number, index</span>) =&gt;</span> &#123;</div><div class="line">    <span class="keyword">return</span> item * item;</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p>运行 <code>yarn run build</code>，会报如下类型检测错误：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">yarn run v0.16.1</div><div class="line">$ &quot;/flow-proj/node_modules/.bin/flow&quot; </div><div class="line">src/index.js:3</div><div class="line">  3: [&apos;1&apos;,2,3,4].map((item:number, index) =&gt; &#123;</div><div class="line">      ^^^ string. This type is incompatible with the expected param type of</div><div class="line">  3: [&apos;1&apos;,2,3,4].map((item:number, index) =&gt; &#123;</div><div class="line">                           ^^^^^^ number</div><div class="line"></div><div class="line"></div><div class="line">Found 1 error</div><div class="line">error Command failed with exit code 2.</div><div class="line">info Visit https://yarnpkg.com/en/docs/cli/run for documentation about this command.</div><div class="line">error Command failed with exit code 1.</div><div class="line">info Visit https://yarnpkg.com/en/docs/cli/run for documentation about this command.</div></pre></td></tr></table></figure></p>
+<p>更多类型坚持实例不再一一列举，官网有很多介绍type的例子。</p>
+<h2 id="Flow-配置文件"><a href="#Flow-配置文件" class="headerlink" title="Flow 配置文件"></a>Flow 配置文件</h2><p>上面提到没有配置文件，会报错，<code>.flowconfig</code> 文件由以下5个部分组成：</p>
+<ul>
+<li>[include] –包含的文件或者目录</li>
+<li>[ignore]  –忽略的文件或者目录，支持正则匹配</li>
+<li>[libs]    –第三方库支持，项目根目录下的flow-typed目录作为库目录</li>
+<li>[options] –默认键值对配置，某些选项可以使用命令行方式重载</li>
+<li>[version] –期望使用的Flow版本</li>
+</ul>
+<h2 id="流行编辑器插件支持"><a href="#流行编辑器插件支持" class="headerlink" title="流行编辑器插件支持"></a>流行编辑器插件支持</h2><ul>
+<li>Visual Studio Code: Flow-Language-Support </li>
+<li>Sublime Text:Flow 和 SublimeLinter-flow<br>更多请参考：<a href="https://flow.org/en/docs/editors/" target="_blank" rel="external">https://flow.org/en/docs/editors/</a></li>
+</ul>
+<p>感谢您的阅读</p>
+<div style="margin:5px auto;padding-top:1.2em;padding-bottom:0.6em;"><br>    <div style="font-size:1em; border-style: solid none none; border-top-width: 1px; border-color: rgb(17, 17, 17); color: rgb(204, 204, 204);"></div><br>    <div style="margin-top: -0.7em;text-align:center;line-height:1.4;"><br>    <span style="padding:8px 23px;background-color:#fff;color:#000;margin-top:-1em;">EOF</span><br>    </div><br></div>
+
+                </div>
+            </div>
+            <div class="fedlab-article-con-reprint">
+                <p>
+                    <span>感谢你的阅读，本文出自</span><a href="https://fedlab-team.github.io/" hidefocus="true">FED实验室</a>，转载时请注明出处，谢谢合作。
+                    <br> 格式为：FED实验室（
+                    <a href="/2017/05/20/煦涵说Flow/" hidefocus="true">https://fedlab-team.github.io/2017/05/20/煦涵说Flow/</a>）
+                </p>
+            </div>
+            
+            <div class="fedlab-article-con-prevnext">
+                
+                <p class="prev-page">上一篇: <a href="/2017/05/28/煦涵说Webpack-IE低版本兼容/" title="煦涵说Webpack-IE低版本兼容" rel="prev" hidefocus="true">煦涵说Webpack-IE低版本兼容</a></p>
+                
+                
+                <p class="next-page">下一篇: <a href="/2017/05/13/煦涵说Yarn/" title="煦涵说Yarn" rel="next" hidefocus="true">煦涵说Yarn</a></p>
+                
+            </div>
+            
+        </div>
+    </div>
+    <div class="fedlab-sidebar">
+        <section class="fedlab-sidebar-qrcode">
+            <div class="sec-content">
+                <img src="http://www.zuojj.com/wp-content/uploads/2017/05/fedlab_qrcode.jpg">
+            </div>
+        </section>
+        <section class="fedlab-sidebar-favlinks">
+            <div class="sec-title">
+                <h3>友情链接</h3>
+            </div>
+            <div class="sec-content">
+                <ul>
+                    <li><a href="http://fedlab-team.github.io">FED实验室</a></li>
+                    <li><a href="http://www.zuojj.com">煦涵</a></li>
+                    <li><a href="http://fedlab-team.github.io">FED实验室</a></li>
+                    <li><a href="http://www.zuojj.com">煦涵</a></li>
+                </ul>
+            </div>
+        </section>
+    </div>
+</div>
+    <footer class="fedlab-footer">
+    <div class="fedlab-footer-inner">
+        <div class="fedlab-copyright">
+            <p>Copyright © 2015 - 2017 FEDLAB.</p>
+        </div>
+    </div>
+</footer>
+    <div class="fedlab-backtop">返回顶部</div>
+    <script src="/js/index.js"></script>
+</body>
+
+</html>
